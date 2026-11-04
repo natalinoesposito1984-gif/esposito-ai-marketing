@@ -39,3 +39,16 @@ Separare frontend, backend/API, database, connettori dei canali, scheduler/worke
 - Prevedere quote, limiti di spesa, gestione errori e registro delle generazioni.
 - Gli abbonamenti consumer a ChatGPT/Claude/Canva non equivalgono necessariamente all'accesso API.
 - I contenuti previdenziali devono essere verificati prima della pubblicazione; non inventare statistiche o rendimenti.
+
+
+## Redazione automatica con anticipo di 7 giorni — requisito prioritario
+- Il calendario editoriale è la fonte delle scadenze. Per ogni contenuto con data/ora di pubblicazione, pianificare la preparazione a T-7 giorni.
+- Un job server-side periodico rileva contenuti da preparare, evitando doppie generazioni (idempotenza) e tenendo conto del fuso Europe/Rome.
+- Pipeline: briefing dall'area commerciale e identità del brand → copy AI → controllo qualità e conformità → grafica nel formato del canale → anteprima → richiesta di approvazione.
+- Stato separato per testo e grafica: da generare, in lavorazione, in revisione, approvato, modifiche richieste, rifiutato. Pubblicazione consentita solo quando entrambi sono approvati.
+- Landing facoltativa, associabile al singolo contenuto anche dopo la generazione; fallback sull'area solo quando presente.
+- Notifica quando il pacchetto è pronto; sollecito per approvazioni pendenti, senza approvazione tacita.
+- Nessuna pubblicazione senza approvazione esplicita; registrare approvatore, data e versione approvata. Se la versione cambia, richiedere nuova approvazione.
+- In caso di guasto o mancata autorizzazione, mettere in coda e notificare: non pubblicare contenuti incompleti.
+- Generazione e pubblicazione automatiche richiedono prima autenticazione, database persistente, job scheduler affidabile, connettori API e autorizzazioni social. Il prototipo attuale con localStorage non è sufficiente.
+- Costi API, quote, limitazioni dei social e disponibilità di connettori grafici da verificare prima dell'attivazione; non abilitare servizi a pagamento senza consenso.
