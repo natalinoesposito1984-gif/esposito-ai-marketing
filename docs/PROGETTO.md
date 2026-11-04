@@ -27,3 +27,15 @@ Separare frontend, backend/API, database, connettori dei canali, scheduler/worke
 - Rispetto GDPR, informative e consensi per comunicazioni commerciali.
 - Non modificare il sito WordPress esistente senza autorizzazione.
 - Evitare abbonamenti e servizi a pagamento senza approvazione.
+
+
+## Modulo AI multi-fornitore — progettazione approvata
+- Provider intercambiabili: OpenAI (testi e strategia), Anthropic Claude (analisi e revisione), Canva (progetti grafici tramite integrazioni ufficiali disponibili).
+- CapCut: integrazione da valutare; non promettere API o esportazione automatica senza verifica.
+- Pipeline per contenuto: brief → generazione → revisione → grafica → approvazione umana → programmazione.
+- Interfaccia unica in italiano; selezione del provider per attività, con fallback configurabile.
+- Ogni provider usa credenziali proprie archiviate esclusivamente sul server; mai nel browser o su GitHub.
+- Attivare chiamate esterne solo dopo configurazione esplicita e valutazione dei costi API.
+- Prevedere quote, limiti di spesa, gestione errori e registro delle generazioni.
+- Gli abbonamenti consumer a ChatGPT/Claude/Canva non equivalgono necessariamente all'accesso API.
+- I contenuti previdenziali devono essere verificati prima della pubblicazione; non inventare statistiche o rendimenti.
