@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {validateDocument,safeEqual,authConfigured,authorized} from '../lib/persistence.js';
+test('documenti accettati e tipi sconosciuti respinti',()=>{assert.deepEqual(validateDocument('brand',{name:'A'}),{name:'A'});assert.throws(()=>validateDocument('secrets',{}));assert.throws(()=>validateDocument('brand',null))});
+test('confronto sicuro delle credenziali',()=>{assert.equal(safeEqual('a','a'),true);assert.equal(safeEqual('a','b'),false)});
+test('API bloccata senza database o credenziali',()=>{assert.equal(authConfigured({APP_USERNAME:'u',APP_PASSWORD:'p'}),false);assert.equal(authorized({headers:{authorization:'Basic '+Buffer.from('u:p').toString('base64')}},{APP_USERNAME:'u',APP_PASSWORD:'p'}),false)});
+test('autenticazione con configurazione completa',()=>{const env={APP_USERNAME:'u',APP_PASSWORD:'p',DATABASE_URL:'postgres://example'};assert.equal(authorized({headers:{authorization:'Basic '+Buffer.from('u:p').toString('base64')}},env),true);assert.equal(authorized({headers:{}},env),false)});
